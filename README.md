@@ -1,19 +1,28 @@
-# AI Teachable Machine
+# 🎓 AI Teachable Machine - College Project
 
-A web-based machine learning application that allows users to create custom image classifiers using multiple machine learning models.
+## 📚 Project Overview
+A web-based machine learning application that allows users to create custom image classifiers using multiple ML models, similar to Google's Teachable Machine.
 
-## Features
+**Course:** Artificial Intelligence / Machine Learning  
+**Academic Year:** 2024  
+**Institution:** [Your College Name]  
+**Submitted By:** [Your Name]  
+**Student ID:** [Your ID]
 
-- **Multi-class Image Classification**: Create multiple classes and upload training images
-- **Multiple ML Models**: Train using Logistic Regression, Random Forest, and CNN
-- **Real-time Predictions**: Test models with uploaded images or webcam feed
-- **Live Training Progress**: Monitor training progress and view metrics
-- **Model Comparison**: Compare predictions from all models side-by-side
-- **Responsive UI**: Modern, user-friendly interface
+## 🎯 Project Objectives
+- Implement multi-class image classification
+- Compare multiple ML algorithms
+- Create user-friendly educational tool
+- Demonstrate real-time model training and prediction
 
-## Installation
+## 🚀 Features
+- **Multi-class Classification**: Create unlimited image categories
+- **Multiple ML Models**: Logistic Regression, Random Forest, CNN
+- **Real-time Training**: Live training progress visualization
+- **Interactive Predictions**: Upload images or use webcam
+- **Model Comparison**: Side-by-side performance analysis
+- **Educational Interface**: Perfect for learning ML concepts
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd teachable_machine_app
+## 🛠️ Technical Implementation
+
+### Architecture
