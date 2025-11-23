@@ -235,7 +235,7 @@ def upload_images():
                     for col, img_path in zip(cols, sample_images):
                         try:
                             image = Image.open(img_path)
-                            col.image(image, width=100, caption=class_name)
+                            col.image(image, caption=class_name)  # Fixed here
                         except Exception as e:
                             st.error(f"Error loading image: {e}")
 
@@ -438,7 +438,7 @@ def predict_images():
     if uploaded_file is not None:
         # Display image
         image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+        st.image(image, caption="Uploaded Image", use_container_width=True)
         
         if st.button("Predict"):
             with st.spinner("Analyzing image..."):
