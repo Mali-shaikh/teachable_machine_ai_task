@@ -6,7 +6,12 @@ import io
 from datetime import datetime
 import numpy as np
 from PIL import Image
+
+# Set matplotlib backend to Agg for Streamlit Cloud compatibility
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+
 import seaborn as sns
 import pandas as pd
 import sys
@@ -235,7 +240,7 @@ def upload_images():
                     for col, img_path in zip(cols, sample_images):
                         try:
                             image = Image.open(img_path)
-                            col.image(image, caption=class_name)  # Fixed here
+                            col.image(image, caption=class_name)
                         except Exception as e:
                             st.error(f"Error loading image: {e}")
 
@@ -378,50 +383,51 @@ def display_training_results(results):
     st.subheader("📊 Training Results")
     
     for model_name, result in results.items():
-        with st.expander(f"{result['model_type']} - Accuracy: {result['accuracy']*100:.2f}%"):
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.write("**Metrics:**")
-                st.metric("Accuracy", f"{result['accuracy']*100:.2f}%")
-                st.write(f"**Classes:** {', '.join(result['classes'])}")
-            
-            with col2:
-                st.write("**Confusion Matrix:**")
-                # Create a simple visualization of confusion matrix
-                cm = np.array(result['confusion_matrix'])
-                fig, ax = plt.subplots(figsize=(6, 4))
-                sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                           xticklabels=result['classes'], 
-                           yticklabels=result['classes'],
-                           ax=ax)
-                ax.set_xlabel('Predicted')
-                ax.set_ylabel('Actual')
-                st.pyplot(fig)
-            
-            # Show training history for CNN
-            if 'training_history' in result:
-                st.write("**Training History:**")
-                history = result['training_history']
-                fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+        if result:  # Only show if result exists
+            with st.expander(f"{result['model_type']} - Accuracy: {result['accuracy']*100:.2f}%"):
+                col1, col2 = st.columns(2)
                 
-                # Accuracy plot
-                ax1.plot(history['accuracy'], label='Training Accuracy')
-                ax1.plot(history['val_accuracy'], label='Validation Accuracy')
-                ax1.set_title('Model Accuracy')
-                ax1.set_xlabel('Epoch')
-                ax1.set_ylabel('Accuracy')
-                ax1.legend()
+                with col1:
+                    st.write("**Metrics:**")
+                    st.metric("Accuracy", f"{result['accuracy']*100:.2f}%")
+                    st.write(f"**Classes:** {', '.join(result['classes'])}")
                 
-                # Loss plot
-                ax2.plot(history['loss'], label='Training Loss')
-                ax2.plot(history['val_loss'], label='Validation Loss')
-                ax2.set_title('Model Loss')
-                ax2.set_xlabel('Epoch')
-                ax2.set_ylabel('Loss')
-                ax2.legend()
+                with col2:
+                    st.write("**Confusion Matrix:**")
+                    # Create a simple visualization of confusion matrix
+                    cm = np.array(result['confusion_matrix'])
+                    fig, ax = plt.subplots(figsize=(6, 4))
+                    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+                               xticklabels=result['classes'], 
+                               yticklabels=result['classes'],
+                               ax=ax)
+                    ax.set_xlabel('Predicted')
+                    ax.set_ylabel('Actual')
+                    st.pyplot(fig)
                 
-                st.pyplot(fig)
+                # Show training history for CNN
+                if 'training_history' in result:
+                    st.write("**Training History:**")
+                    history = result['training_history']
+                    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+                    
+                    # Accuracy plot
+                    ax1.plot(history['accuracy'], label='Training Accuracy')
+                    ax1.plot(history['val_accuracy'], label='Validation Accuracy')
+                    ax1.set_title('Model Accuracy')
+                    ax1.set_xlabel('Epoch')
+                    ax1.set_ylabel('Accuracy')
+                    ax1.legend()
+                    
+                    # Loss plot
+                    ax2.plot(history['loss'], label='Training Loss')
+                    ax2.plot(history['val_loss'], label='Validation Loss')
+                    ax2.set_title('Model Loss')
+                    ax2.set_xlabel('Epoch')
+                    ax2.set_ylabel('Loss')
+                    ax2.legend()
+                    
+                    st.pyplot(fig)
 
 def predict_images():
     st.header("🔍 Make Predictions")
