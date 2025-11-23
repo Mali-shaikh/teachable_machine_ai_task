@@ -3,11 +3,11 @@
 ## 📚 Project Overview
 A web-based machine learning application that allows users to create custom image classifiers using multiple ML models, similar to Google's Teachable Machine.
 
-**Course:** Artificial Intelligence / Machine Learning  
-**Academic Year:** 2024  
-**Institution:** [Your College Name]  
-**Submitted By:** [Your Name]  
-**Student ID:** [Your ID]
+**Course:** Artificial Intelligence / Data Science  
+**Academic Year:** 2025  
+**Institution:** [SMIT]  
+**Submitted By:** [Muhammad Ali Shaikh]  
+**Student ID:** [367345]
 
 ## 🎯 Project Objectives
 - Implement multi-class image classification
