@@ -1,4 +1,4 @@
-# 🎓 AI Teachable Machine - College Project
+# 🎓 AI Teachable Machine
 
 ## 📚 Project Overview
 A web-based machine learning application that allows users to create custom image classifiers using multiple ML models, similar to Google's Teachable Machine.
