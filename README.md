@@ -26,3 +26,38 @@ A web-based machine learning application that allows users to create custom imag
 ## 🛠️ Technical Implementation
 
 ### Architecture
+
+
+### Models Implemented
+1. **Logistic Regression** - Baseline linear model
+2. **Random Forest** - Ensemble tree-based model  
+3. **CNN** - Deep learning convolutional neural network
+
+### Technologies Used
+- **Frontend**: Streamlit
+- **ML Framework**: TensorFlow, Scikit-learn
+- **Image Processing**: OpenCV, Pillow
+- **Data Management**: NumPy, Pandas
+- **Visualization**: Matplotlib, Seaborn
+
+## 📦 Installation & Setup
+
+### Prerequisites
+- Python 3.8+
+- pip package manager
+
+### Quick Start
+# 1. Clone repository
+git clone https://github.com/yourusername/teachable-machine.git
+cd teachable-machine
+
+# 2. Create virtual environment
+python -m venv venv
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Mac/Linux
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run application
+streamlit run streamlit_app.py
