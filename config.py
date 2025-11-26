@@ -2,10 +2,12 @@ import os
 
 class Config:
     SECRET_KEY = 'your-secret-key-here'
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'temp_uploads')
-    MODEL_FOLDER = os.path.join(BASE_DIR, 'models', 'saved_models')
-    DATASET_FOLDER = os.path.join(BASE_DIR, 'data', 'datasets')
+    
+    # Simple relative paths for Streamlit Cloud
+    BASE_DIR = os.path.abspath('.')
+    UPLOAD_FOLDER = 'temp_uploads'
+    MODEL_FOLDER = 'models/saved_models'
+    DATASET_FOLDER = 'data/datasets'
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
     MIN_IMAGES_PER_CLASS = 10
