@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Teachable Machine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> AI Teachable Machine</h1>
+            <p>Create custom image classifiers with multiple ML models</p>
+        </header>
+
+        <div class="app-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="section">
+                    <h3><i class="fas fa-folder-plus"></i> Create Classes</h3>
+                    <div class="input-group">
+                        <input type="text" id="className" placeholder="Enter class name">
+                        <button onclick="createClass()">Create Class</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-upload"></i> Upload Images</h3>
+                    <select id="uploadClassSelect">
+                        <option value="">Select a class</option>
+                    </select>
+                    <input type="file" id="imageUpload" multiple accept="image/*">
+                    <button onclick="uploadImages()">Upload Images</button>
+                    <div id="uploadProgress"></div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-brain"></i> Train Models</h3>
+                    <div class="model-selection">
+                        <label><input type="checkbox" name="model" value="logistic" checked> Logistic Regression</label>
+                        <label><input type="checkbox" name="model" value="random_forest" checked> Random Forest</label>
+                        <label><input type="checkbox" name="model" value="cnn" checked> CNN</label>
+                    </div>
+                    <button onclick="trainModels()" id="trainBtn">Train Models</button>
+                    <div id="trainingProgress"></div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-list"></i> Classes Overview</h3>
+                    <div id="classesList"></div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Prediction Tabs -->
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openTab('uploadTab')">
+                        <i class="fas fa-upload"></i> Upload Image
+                    </button>
+                    <button class="tab-button" onclick="openTab('webcamTab')">
+                        <i class="fas fa-camera"></i> Webcam
+                    </button>
+                    <button class="tab-button" onclick="openTab('resultsTab')">
+                        <i class="fas fa-chart-bar"></i> Results
+                    </button>
+                </div>
+
+                <!-- Upload Tab -->
+                <div id="uploadTab" class="tab-content active">
+                    <div class="prediction-area">
+                        <div class="upload-zone" id="uploadZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop an image or click to browse</p>
+                            <input type="file" id="predictUpload" accept="image/*" hidden>
+                        </div>
+                        <div id="uploadPreview" class="preview-area"></div>
+                    </div>
+                    <div id="uploadPredictions" class="predictions-container"></div>
+                </div>
+
+                <!-- Webcam Tab -->
+                <div id="webcamTab" class="tab-content">
+                    <div class="prediction-area">
+                        <div class="webcam-container">
+                            <video id="webcam" width="640" height="480" autoplay></video>
+                            <canvas id="webcamCanvas" width="640" height="480"></canvas>
+                        </div>
+                        <div class="webcam-controls">
+                            <button onclick="startWebcam()" id="startWebcamBtn">
+                                <i class="fas fa-play"></i> Start Webcam
+                            </button>
+                            <button onclick="stopWebcam()" id="stopWebcamBtn" disabled>
+                                <i class="fas fa-stop"></i> Stop Webcam
+                            </button>
+                            <button onclick="captureImage()" id="captureBtn" disabled>
+                                <i class="fas fa-camera"></i> Capture
+                            </button>
+                        </div>
+                    </div>
+                    <div id="webcamPredictions" class="predictions-container"></div>
+                </div>
+
+                <!-- Results Tab -->
+                <div id="resultsTab" class="tab-content">
+                    <div class="results-container">
+                        <h3>Training History</h3>
+                        <div id="trainingResults"></div>
+                        <div id="modelMetrics"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="loader"></div>
+            <p id="loadingMessage">Processing...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

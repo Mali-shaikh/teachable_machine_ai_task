@@ -1,0 +1,28 @@
+teachable_machine/
+├── 📁 .streamlit/                    # Streamlit config
+│   └── config.toml
+├── 📁 data/                         # Data management
+│   ├── __init__.py
+│   └── data_manager.py
+├── 📁 trainers/                     # ML models
+│   ├── __init__.py
+│   ├── logistic_trainer.py
+│   ├── random_forest_trainer.py
+│   └── cnn_trainer.py
+├── 📁 inference/                    # Prediction logic
+│   ├── __init__.py
+│   └── predictor.py
+├── 📁 utils/                        # Utilities
+│   ├── __init__.py
+│   └── validators.py
+├── 📁 models/                       # Saved models (auto-created)
+│   └── saved_models/
+├── 📁 data/                         # Training data (auto-created)
+│   └── datasets/
+├── 📄 streamlit_app.py              # MAIN APP FILE
+├── 📄 config.py                     # Configuration
+├── 📄 requirements.txt              # Dependencies
+├── 📄 README.md                     # Project documentation
+├── 📄 presentation.md               # Presentation notes
+├── 📄 demo_guide.md                 # Demo instructions
+└── 📄 report.pdf                    # Project report (optional)
